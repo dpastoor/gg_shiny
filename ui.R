@@ -23,7 +23,15 @@ shinyUI(fluidPage(
            checkboxInput('point', 'Point', value = TRUE),
            checkboxInput('line', 'Line'),
            checkboxInput('col_factor', 'Factor Color', value = TRUE),
-           checkboxInput('log_y', 'log Y scale', value = FALSE)
+           checkboxInput('log_y', 'log Y scale', value = FALSE),
+           sliderInput('point_size', 'Point Size', 
+                       min=0.5, max=5,
+                       value=2, 
+                       step=0.2),
+           sliderInput('line_size', 'Line Size', 
+                       min=0.5, max=5,
+                       value=1, 
+                       step=0.2)
     ),
     column(4, offset = 1,
            selectInput('x', 'X', names(dataset), "TIME" ),

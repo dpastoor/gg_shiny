@@ -12,9 +12,9 @@ shinyServer(function(input, output) {
     p <- ggplot(dataset(), aes_string(x=input$x, y=input$y, group = input$group))
     
     if (input$point)
-      p <- p + geom_point()
+      p <- p + geom_point(size = input$point_size)
     if (input$line)
-      p <- p + geom_line()
+      p <- p + geom_line(size = input$line_size)
     
     if (input$color != 'None') {
       ifelse(input$col_factor,
