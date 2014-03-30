@@ -16,8 +16,13 @@ shinyServer(function(input, output) {
     if (input$line)
       p <- p + geom_line()
     
-    if (input$color != 'None')
-      p <- p + aes_string(color=input$color)
+    if (input$color != 'None') {
+      ifelse(input$col_factor,
+        p <- p + aes_string(color=paste("factor(",input$color, ")")),
+        p <- p + aes_string(color=input$color)        
+        )
+    }
+     
     
     facets <- paste(input$facet_row, '~', input$facet_col)
     if (facets != '. ~ .')

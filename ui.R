@@ -20,9 +20,9 @@ shinyUI(fluidPage(
                        value=length(unique(dataset$ID)), 
                        step=1, round=0),
            br(),
-           checkboxInput('point', 'Point'),
+           checkboxInput('point', 'Point', value = TRUE),
            checkboxInput('line', 'Line'),
-           selectInput('group', 'Group', c(names(dataset), "ID"))
+           checkboxInput('col_factor', 'Factor Color', value = FALSE)
     ),
     column(4, offset = 1,
            selectInput('x', 'X', names(dataset), "TIME" ),
@@ -33,7 +33,9 @@ shinyUI(fluidPage(
            selectInput('facet_row', 'Facet Row',
                        c(None='.', names(sd_iv_rich_pkpd))),
            selectInput('facet_col', 'Facet Column',
-                       c(None='.', names(sd_iv_rich_pkpd)))
+                       c(None='.', names(sd_iv_rich_pkpd))),
+           selectInput('group', 'Group', c('None', names(dataset)), 
+                       selected = 'ID')
     )
   )
 ))
