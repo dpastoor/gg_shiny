@@ -22,7 +22,8 @@ shinyServer(function(input, output) {
         p <- p + aes_string(color=input$color)        
         )
     }
-     
+    if (input$log_y)
+      p <- p + scale_y_log10()
     
     facets <- paste(input$facet_row, '~', input$facet_col)
     if (facets != '. ~ .')
